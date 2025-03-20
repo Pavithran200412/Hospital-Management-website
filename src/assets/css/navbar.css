@@ -1,0 +1,126 @@
+/* Navbar Styles */
+.navbar {
+  background-color: #f8ede0; /* Light Beige Background */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Container */
+.navbar-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.navbar-logo img {
+  height: 60px; /* Adjust logo size */
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  background-color: #d9e7ff; /* Light Blue Background */
+  border-radius: 30px;
+  padding: 10px 20px;
+  list-style: none;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #1b1b6e; /* Dark Blue */
+}
+
+/* Appointment Button */
+.appointment-btn {
+  background-color: #2d2262; /* Dark Blue */
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.appointment-btn:hover {
+  background-color: #1b1b6e; /* Darker shade on hover */
+}
+
+/* ======================== */
+/* 📌 Responsive Design 📌 */
+/* ======================== */
+
+/* Medium Screens (Tablets) */
+@media screen and (max-width: 992px) {
+  .navbar-links {
+      padding: 8px 15px;
+      border-radius: 20px;
+  }
+
+  .navbar-links li {
+      margin: 0 10px;
+  }
+
+  .appointment-btn {
+      padding: 7px 12px;
+      font-size: 14px;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media screen and (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .navbar-container {
+      flex-direction: column;
+  }
+
+  .navbar-logo img {
+      height: 50px;
+  }
+
+  .navbar-links {
+      flex-direction: column;
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+      margin-top: 10px;
+  }
+
+  .navbar-links li {
+      margin: 10px 0;
+  }
+
+  .appointment-btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+  }
+}
+
+/* Extra Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+  .navbar {
+      padding: 5px 10px;
+  }
+
+  .navbar-logo img {
+      height: 40px;
+  }
+
+  .appointment-btn {
+      font-size: 14px;
+  }
+}

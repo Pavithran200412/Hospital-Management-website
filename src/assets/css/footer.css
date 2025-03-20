@@ -1,0 +1,193 @@
+/* Footer Styles */
+.footer {
+  background-color: #f4f4f4;
+  padding: 30px 50px;
+  font-family: Arial, sans-serif;
+}
+
+/* Footer Container */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Footer Left Section */
+.footer-left {
+  max-width: 300px;
+}
+
+/* Logo */
+.footer-logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+/* Footer Text */
+.footer-text {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Subscribe Box */
+.subscribe-box {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #333;
+  padding: 5px 0;
+}
+
+.subscribe-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 80%;
+  padding: 5px;
+}
+
+.subscribe-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 16px;
+}
+
+/* Footer Links */
+.footer-links h5, .footer-contact h5 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+  color: #007bff;
+}
+
+/* Footer Contact */
+.footer-contact p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Social Media Icons */
+.footer-social {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.social-icon {
+  font-size: 20px;
+  color: #222;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  color: #007bff;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #222;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+}
+
+.powered-by {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* ======================== */
+/* 📌 Responsive Design 📌 */
+/* ======================== */
+
+/* Medium Screens (Tablets) */
+@media screen and (max-width: 992px) {
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .footer-left, .footer-links, .footer-contact {
+      max-width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .subscribe-box {
+      justify-content: center;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media screen and (max-width: 768px) {
+  .footer {
+      padding: 20px;
+  }
+
+  .footer-logo {
+      width: 120px;
+  }
+
+  .footer-text {
+      font-size: 12px;
+  }
+
+  .subscribe-input {
+      width: 100%;
+      text-align: center;
+  }
+
+  .footer-links ul {
+      padding: 0;
+  }
+
+  .footer-links ul li {
+      margin: 5px 0;
+  }
+
+  .footer-social {
+      margin-top: 10px;
+  }
+
+  .social-icon {
+      font-size: 18px;
+  }
+}
+
+/* Extra Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+  .footer {
+      padding: 15px;
+  }
+
+  .footer-logo {
+      width: 100px;
+  }
+
+  .footer-bottom {
+      font-size: 12px;
+  }
+
+  .social-icon {
+      font-size: 16px;
+  }
+}
