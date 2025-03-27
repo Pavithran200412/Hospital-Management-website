@@ -4,7 +4,7 @@
 /* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #dfc7b0;
     margin: 0;
     padding: 0;
 }
@@ -101,4 +101,97 @@ body {
 .card-body {
     text-align: center;
     padding: 15px;
+}
+
+/* Center the form on the page */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    background-color: #f8f9fa;
+  }
+  
+  /* Form styling */
+  .auth-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+  }
+  
+  /* Form Title */
+  .auth-form h2 {
+    margin-bottom: 20px;
+    color: #2d2262;
+    font-size: 24px;
+  }
+  
+  /* Input Fields */
+  .auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Submit Button */
+  .auth-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2d2262;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .auth-form button:hover {
+    background-color: #1b1b6e;
+  }
+  
+  /* Forgot Password Link */
+  .auth-form .forgot-password {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .auth-form .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 400px) {
+    .auth-form {
+      width: 90%;
+    }
+  }
+
+  /* Background for Auth Pages */
+.auth-container {
+  background: url('C:\Users\Pavit\Documents\React\hospital-website\src\assets\Background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Styling */
+.auth-card {
+  background-color: rgba(255, 255, 255, 0.85); /* Slight transparency */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 25rem;
 }

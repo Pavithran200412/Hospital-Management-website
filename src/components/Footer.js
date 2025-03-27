@@ -13,10 +13,6 @@ const Footer = () => {
           <p className="footer-text">
             MedCare Hospital and Clinic is set to become the modern super specialty hospital and clinic in Qatar, committed to delivering exceptional medical care.
           </p>
-          <div className="subscribe-box">
-            <input type="email" placeholder="Enter Your E-Mail*" className="subscribe-input" />
-            <button className="subscribe-btn">✔</button>
-          </div>
         </div>
 
         {/* Quick Links */}

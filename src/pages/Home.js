@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer"; // Import Footer Component
 import HomePageImage from "../assets/HomePage.jpg";
 import CardImg1 from "../assets/Card1.jpg";
 import CardImg2 from "../assets/Card2.jpg";
@@ -30,8 +29,7 @@ const Home = () => {
         ))}
       </section>
 
-      {/* Footer Section */}
-      <Footer />
+      
     </div>
   );
 };

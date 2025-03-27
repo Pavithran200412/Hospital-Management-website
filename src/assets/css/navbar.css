@@ -1,10 +1,11 @@
 /* Navbar Styles */
 .navbar {
-  background-color: #f8ede0; /* Light Beige Background */
+  background-color: #d3b38a;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 /* Container */
@@ -15,15 +16,28 @@
   justify-content: space-between;
 }
 
-/* Logo */
-.navbar-logo img {
-  height: 60px; /* Adjust logo size */
+/* Logo Section */
+.navbar-logo {
+  display: flex;
+  align-items: center;
 }
+
+.navbar-logo img {
+  height: 60px;
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
 
 /* Navbar Links */
 .navbar-links {
   display: flex;
-  background-color: #d9e7ff; /* Light Blue Background */
+  background-color: #d9e7ff;
   border-radius: 30px;
   padding: 10px 20px;
   list-style: none;
@@ -36,12 +50,17 @@
 .navbar-links a {
   text-decoration: none;
   font-weight: bold;
-  color: #1b1b6e; /* Dark Blue */
+  color: #1b1b6e;
 }
 
-/* Appointment Button */
-.appointment-btn {
-  background-color: #2d2262; /* Dark Blue */
+/* Buttons (Sign In, Sign Up, Appointment) */
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.SignIn-btn, .SignUp-btn, .appointment-btn {
+  background-color: #2d2262;
   color: white;
   padding: 8px 15px;
   border-radius: 20px;
@@ -50,77 +69,75 @@
   font-weight: bold;
 }
 
-.appointment-btn:hover {
-  background-color: #1b1b6e; /* Darker shade on hover */
+.SignIn-btn:hover, .SignUp-btn:hover, .appointment-btn:hover {
+  background-color: #1b1b6e;
 }
 
-/* ======================== */
-/* 📌 Responsive Design 📌 */
-/* ======================== */
-
-/* Medium Screens (Tablets) */
-@media screen and (max-width: 992px) {
-  .navbar-links {
-      padding: 8px 15px;
-      border-radius: 20px;
-  }
-
-  .navbar-links li {
-      margin: 0 10px;
-  }
-
-  .appointment-btn {
-      padding: 7px 12px;
-      font-size: 14px;
-  }
-}
-
-/* Small Screens (Mobile) */
+/* Mobile View (Screens smaller than 768px) */
 @media screen and (max-width: 768px) {
-  .navbar {
+  .navbar-container {
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+  }
+
+  .navbar-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #d9e7ff;
+      padding: 10px;
+      border-radius: 0;
       text-align: center;
   }
 
-  .navbar-container {
-      flex-direction: column;
-  }
-
-  .navbar-logo img {
-      height: 50px;
-  }
-
-  .navbar-links {
-      flex-direction: column;
-      background-color: transparent;
-      padding: 0;
-      border-radius: 0;
-      margin-top: 10px;
+  .navbar-links.active {
+      display: flex;
+      animation: slideIn 0.3s ease-in-out;
   }
 
   .navbar-links li {
       margin: 10px 0;
   }
 
-  .appointment-btn {
+  .menu-toggle {
+      display: block;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+  }
+
+  .navbar-buttons {
+      flex-direction: column;
       width: 100%;
-      padding: 10px;
-      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+  }
+
+  .navbar-buttons button {
+      width: 100%;
+      margin-top: 5px;
   }
 }
 
-/* Extra Small Screens (Phones) */
-@media screen and (max-width: 480px) {
-  .navbar {
-      padding: 5px 10px;
+/* Slide-in Animation */
+@keyframes slideIn {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
   }
-
-  .navbar-logo img {
-      height: 40px;
+  to {
+      transform: translateY(0);
+      opacity: 1;
   }
+}
 
-  .appointment-btn {
-      font-size: 14px;
+/* Desktop View (Screens larger than 768px) */
+@media screen and (min-width: 769px) {
+  .menu-toggle {
+      display: none;
   }
 }
