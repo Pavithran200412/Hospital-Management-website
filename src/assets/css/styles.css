@@ -195,3 +195,89 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   width: 25rem;
 }
+
+.appointment-container {
+  background: url('C:\Users\Pavit\Documents\React\hospital-website\src\assets\Background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.appointment-card {
+  width: 50rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Carousel Container */
+.carousel {
+  width: 80%;
+  margin: 40px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel Images */
+.carousel-inner img {
+  width: 100%;
+  height: 450px; /* Adjust height as needed */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #007bff;
+  border: none;
+  margin: 0 5px;
+}
+
+.carousel-indicators .active {
+  background-color: #0056b3;
+}
+
+/* Carousel Controls (Prev & Next Buttons) */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/* Carousel Captions */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.carousel-caption h5 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.carousel-caption p {
+  font-size: 16px;
+  color: #ddd;
+}

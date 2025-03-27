@@ -24,7 +24,7 @@ const ForgotPassword = () => {
         setMessage(data.error || "Failed to send reset email.");
       }
     } catch (error) {
-      setMessage("Error sending reset email. Try again later.");
+      setMessage("Send reset email. Try again later.");
     }
   };
 
