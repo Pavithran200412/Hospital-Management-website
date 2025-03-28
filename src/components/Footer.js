@@ -1,7 +1,8 @@
 import React from "react";
 import "../assets/css/footer.css"; // Import Footer CSS
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaTimes } from "react-icons/fa"; // Correct Import for Icons
+import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa"; // Correct Import for Icons
 import FooterLogo from "../assets/footer.jpg"; // Import Footer Image
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Footer = () => {
   return (
@@ -19,10 +20,10 @@ const Footer = () => {
         <div className="footer-links">
           <h5>Quick Links</h5>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Departments</a></li>
-            <li><a href="#">Facilities</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/departments">Departments</Link></li>
+            <li><Link to="/facilities">Facilities</Link></li>
           </ul>
         </div>
 
@@ -30,9 +31,9 @@ const Footer = () => {
         <div className="footer-links">
           <h5>Useful Links</h5>
           <ul>
-            <li><a href="#">Accreditation</a></li>
-            <li><a href="#">Career</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><Link to="/accreditation">Accreditation</Link></li>
+            <li><Link to="/career">Career</Link></li>
+            <li><Link to="/faq">FAQ</Link></li>
           </ul>
         </div>
 
@@ -47,11 +48,10 @@ const Footer = () => {
 
       {/* Social Media Links */}
       <div className="footer-social">
-        <FaFacebookF className="social-icon" />
-        <FaInstagram className="social-icon" />
-        <FaYoutube className="social-icon" />
-        <FaLinkedinIn className="social-icon" />
-        <FaTimes className="social-icon" />
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF className="social-icon" /></a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram className="social-icon" /></a>
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"><FaYoutube className="social-icon" /></a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
       </div>
 
       {/* Copyright */}
