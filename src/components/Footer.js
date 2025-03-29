@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="footer-left">
           <img src={FooterLogo} alt="MedCare Logo" className="footer-logo" />
           <p className="footer-text">
-            MedCare Hospital and Clinic is set to become the modern super specialty hospital and clinic in Qatar, committed to delivering exceptional medical care.
+            MedCare Hospital and Clinic is set to become the modern super specialty hospital and clinic in Tamil Nadu, committed to delivering exceptional medical care.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="footer-bottom">
-        <p>©2025, All Rights Reserved – MedCare Hospital and Clinic, Doha-Qatar <span className="powered-by">| Powered by MedCare.com</span></p>
+        <p>©2025, All Rights Reserved – MedCare Hospital and Clinic, Tamil Nadu <span className="powered-by">| Powered by MedCare.com</span></p>
       </div>
     </footer>
   );
