@@ -32,36 +32,45 @@ const Home = () => {
         />
       </main>
 
-      {/* About Us Section */}
-        <div className="font-roboto">
-            {/* Hero Section */}
-      <section className="relative">
-        <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
-         <b> 
-        <h1 className="text-6xl font-bold text-blue-900">About Us</h1>
-        </b>
-        </div>
-    </section>
+     {/* About Us Section */}
+<section className="py-12 px-4 md:px-12 flex justify-center">
+  <div className="max-w-4xl w-full mx-auto p-6 border-container rounded-lg shadow-lg relative">
+    <h1 className="text-3xl font-bold text-blue-900 mb-4 text-left">&nbsp;&nbsp;About Us</h1>
+    <p className="text-lg text-gray-700 text-justify leading-relaxed mb-4">
+      <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to MedCare Hospitals Pvt Ltd, a leading healthcare institution in
+      Chromepet,Chennai, Tamil Nadu committed to delivering world-class medical 
+      services. With state-of-the-art infrastructure and a highly skilled team
+      of doctors, we provide comprehensive, patient-centered care across
+      multiple specialties.</h5>
+    </p>
+    
+    {/* Specialties List */}
+    <ul className="text-lg text-gray-700 text-justify leading-relaxed list-none space-y-2">
+      <li> <b>Cardiology & Heart Care</b> – Advanced diagnostics, angioplasty, bypass surgery.</li>
+      <li> <b>Neurology & Neurosurgery</b> – Stroke management, brain & spine surgeries.</li>
+      <li> <b>Orthopedics & Joint Replacement</b> – Knee, hip replacement, sports injury care.</li>
+      <li> <b>Oncology & Cancer Care</b> – Chemotherapy, radiation, and surgical oncology.</li>
+      <li> <b>Women & Child Healthcare</b> – Maternity, pediatrics, and fertility treatments.</li>
+      <li> <b>Gastroenterology & Liver Care</b> – Endoscopy, bariatric & liver transplant services.</li>
+      <li> <b>Pulmonology & Respiratory Care</b> – Asthma, COPD, and advanced lung treatments.</li>
+      <li> <b>Excellence in Healthcare</b> – Providing world-class medical services with cutting-edge technology.</li>
+      <li> <b>Multispecialty Expertise</b> – Specialized departments in cardiology, neurology, orthopedics, oncology, maternity care, and more.</li>
+      <li> <b>Highly Skilled Professionals</b> – A team of experienced doctors, surgeons, and healthcare specialists.</li>
+      <li> <b>State-of-the-Art Facilities</b> – Modern infrastructure, advanced diagnostic labs, ICUs, and operation theaters.</li>
+      <li> <b>24/7 Emergency Services</b> – Quick response emergency care and ambulance services available around the clock.</li>
+      <li> <b>Patient-Centered Approach</b> – Personalized treatment plans with a focus on compassionate care.</li>
+      <li> <b>Advanced Technology</b> – Utilizing AI-driven diagnostics, robotic surgeries, and telemedicine for better patient outcomes.</li>
+      <li> <b>Commitment to Quality</b> – Accredited healthcare institution maintaining global safety and treatment standards.</li>
+      <li> <b>Health & Wellness Programs</b> – Preventive health checkups, vaccinations, and wellness counseling for a healthier community.</li>
+    </ul>
 
-        {/* About Section */}
-      <section className="py-12 px-4 md:px-12 flex justify-center">
-        <div className="max-w-4xl w-full">
-          <h2 className="text-3xl font-bold text-blue-900 mb-4 text-left">Our Story</h2>
-            <p className="text-lg text-gray-700 text-justify leading-relaxed">
-            Welcome to MedCare Hospitals Pvt Ltd, a leading healthcare institution in Kattankulathur, Chennai, committed to delivering world-class medical services. With state-of-the-art infrastructure and a highly skilled team of doctors, we provide comprehensive, patient-centered care across multiple specialties.
-
-            Our Key Specialties:
-              ✔ Cardiology & Heart Care – Advanced diagnostics, angioplasty, bypass surgery.
-              ✔ Neurology & Neurosurgery – Stroke management, brain & spine surgeries.
-              ✔ Orthopedics & Joint Replacement – Knee, hip replacement, sports injury care.
-              ✔ Oncology & Cancer Care – Chemotherapy, radiation, and surgical oncology.
-              ✔ Women & Child Healthcare – Maternity, pediatrics, and fertility treatments.
-              ✔ Gastroenterology & Liver Care – Endoscopy, bariatric & liver transplant services.
-              ✔ Pulmonology & Respiratory Care – Asthma, COPD, and advanced lung treatments.
-              </p>
-          </div>
-        </section>
-        </div>
+    {/* Border Effects */}
+    <span className="border-effect border-top"></span>
+    <span className="border-effect border-end"></span>
+    <span className="border-effect border-bottom"></span>
+    <span className="border-effect border-start"></span>
+  </div>
+</section>
 
       {/* Cards Section */}
       <section className="cards-container">
@@ -87,26 +96,9 @@ const Home = () => {
       {/* Carousel Section */}
       <div id="carouselExampleDark" className="carousel carousel-dark slide my-5">
         <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active" data-bs-interval="10000">
@@ -128,24 +120,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
 
       {/* Floating Chatbot Button */}
@@ -155,11 +129,7 @@ const Home = () => {
         </button>
         {chatOpen && (
           <div className="chatbot-window">
-            <iframe
-              src="https://your-chatbot-url.com"
-              title="Chatbot"
-              className="chatbot-iframe"
-            ></iframe>
+            <iframe src="https://your-chatbot-url.com" title="Chatbot" className="chatbot-iframe"></iframe>
           </div>
         )}
       </div>
