@@ -1,42 +1,42 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const path = require("path"); // <-- Required for static path
+
+const Doctor = require("./models/Doctor");
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // Allow JSON request body
+app.use(express.json());
 
-// Create transporter for sending emails
-const transporter = nodemailer.createTransport({
-    service: "gmail", // Change this if using another provider (e.g., Outlook, Yahoo)
-    auth: {
-        user: "vawemo2666@flektel.com", // Replace with your email
-        pass: "1234567890", // Replace with your email password
-    },
-});
+// ✅ Serve local images from /public/images
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
-// API to send reset password email
-app.post("/api/reset-password", async (req, res) => {
-    const { email } = req.body;
+// MongoDB connection
+mongoose.connect("mongodb://127.0.0.1:27017/MedCare-Hospital", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.error("MongoDB connection error:", err));
 
-    // Email message options
-    const mailOptions = {
-        from: "your-email@gmail.com",  // 🔴 Same as your auth email
-        to: email, // Send email to the user
-        subject: "Password Reset Request",
-        text: `Click on this link to reset your password: http://localhost:3000/reset-password?email=${email}`
-    };
-
-    try {
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: "Reset email sent successfully!" });
-    } catch (error) {
-        console.error("Email sending error:", error);
-        res.status(500).json({ message: "Failed to send email." });
+// Route to get doctor info by department
+app.get("/api/doctor-info/:department", async (req, res) => {
+  const department = decodeURIComponent(req.params.department);
+  try {
+    const doctor = await Doctor.findOne({ department });
+    if (doctor) {
+      res.json(doctor);
+    } else {
+      res.status(404).json({ message: "Doctor info not found." });
     }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error." });
+  }
 });
 
-// Start Server
+// Start server
 app.listen(5000, () => {
-    console.log("Server running on port 5000");
+  console.log("Server running on port 5000");
 });
