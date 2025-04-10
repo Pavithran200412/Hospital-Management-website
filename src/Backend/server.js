@@ -13,10 +13,7 @@ app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/MedCare-Hospital", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect("mongodb://127.0.0.1:27017/MedCare-Hospital")
 .then(() => console.log("MongoDB connected"))
 .catch((err) => console.error("MongoDB connection error:", err));
 
