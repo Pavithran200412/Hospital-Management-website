@@ -9,7 +9,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import AppointmentForm from "./pages/AppointmentForm";
 import Doctors from "./pages/Doctors";
 import Services from "./pages/Services";
-import Insurance from "./pages/Insurance";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import DoctorInfo from "./pages/DoctorInfo"; 
@@ -28,7 +27,6 @@ const App = () => {
         <Route path="/appointment" element={<AppointmentForm />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/insurance" element={<Insurance />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/doctor-info/:departmentName" element={<DoctorInfo />} />
