@@ -10,6 +10,7 @@ const Doctor = require("./models/Doctor");
 const Service = require("./models/Service");
 const Testimonial = require("./models/Testimonial");
 const User = require("./models/User");
+const Appointment = require("./models/Appointment"); // Import Appointment model
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -138,6 +139,32 @@ app.get('/api/testimonials', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error fetching testimonials' });
+  }
+});
+
+// ✅ Appointment submission route
+app.post("/api/appointments", async (req, res) => {
+  const { name, email, specialty, phone, appointmentDate, appointmentTime } = req.body;
+
+  try {
+    // Create a new appointment document
+    const appointment = new Appointment({
+      name,
+      email,
+      specialty,
+      phone,
+      appointmentDate,
+      appointmentTime,
+    });
+
+    // Save the appointment to the database
+    await appointment.save();
+
+    // Respond with success message
+    res.status(201).json({ message: "Appointment successfully booked!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "There was an error booking the appointment." });
   }
 });
 

@@ -89,12 +89,12 @@ const Home = () => {
 
           {/* YouTube Embed */}
           <div className="ratio ratio-16x9">
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="MedCare Hospital Tour"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1hV7NBT0pIY?si=7AEk87wtfFZzgvCr" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
           </div>
         </div>
       </section>

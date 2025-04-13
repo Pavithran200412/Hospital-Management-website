@@ -21,15 +21,36 @@ const AppointmentForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setShowPopup(true);
     console.log("Form Data:", formData);
+
+    try {
+      // Send the form data to the backend
+      const response = await fetch("http://localhost:5000/api/appointments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Appointment submitted:", data.message);
+      } else {
+        console.error("Error:", data.message);
+      }
+    } catch (error) {
+      console.error("Error submitting appointment:", error);
+    }
   };
 
   const handleClosePopup = () => {
     setShowPopup(false);
-    navigate("/");
+    navigate("/"); // Navigate to home after closing the popup
   };
 
   return (
@@ -119,23 +140,22 @@ const AppointmentForm = () => {
           <div className="col-md-3">
             <button
               type="button"
-              className="btn btn-outline-secondary w-100"
+              className="btn btn-dark w-100"
               onClick={() => navigate("/")}
             >
-              Back to Home
+              Back
             </button>
           </div>
         </form>
       </div>
 
-      {/* Popup Modal */}
+      {/* Confirmation Popup */}
       {showPopup && (
-        <div className="popup-modal">
+        <div className="popup">
           <div className="popup-content">
-            <h4>✅ Appointment Submitted Successfully!</h4>
-            <p>Thank you, {formData.name}. We’ll get back to you soon.</p>
-            <button className="btn btn-primary" onClick={handleClosePopup}>
-              OK
+            <h2>Appointment Booked Successfully</h2>
+            <button className="btn btn-success" onClick={handleClosePopup}>
+              Close
             </button>
           </div>
         </div>

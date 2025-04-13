@@ -219,6 +219,52 @@ body {
   margin-bottom: 1rem;
   font-weight: bold;
 }
+/* Add this to your main CSS or a dedicated CSS file */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.popup-content .btn-success {
+  padding: 8px 20px;
+  font-weight: bold;
+}
+
+/* Optional: animation */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 .popup-modal {
   position: fixed;
