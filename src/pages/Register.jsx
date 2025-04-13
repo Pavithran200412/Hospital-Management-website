@@ -96,6 +96,10 @@ const Register = () => {
             </div>
 
             <button type="submit" className="btn btn-primary w-100">Submit Registration</button>
+            <button type="button" className="btn btn-secondary w-100 mt-2" onClick={() => navigate("/")}>Go to Home</button>
+            <button className="btn btn-link text-decoration-none" onClick={() => navigate("/signin")}>
+            if you already have an account, click here to login
+          </button>
           </form>
         </div>
       </div>

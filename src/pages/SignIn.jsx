@@ -64,6 +64,9 @@ const SignIn = () => {
             <label className="form-check-label" htmlFor="rememberMe">Remember Me</label>
           </div>
           <button type="submit" className="btn btn-primary w-100">Sign In</button>
+          <button className="btn btn-secondary w-100 mt-2" onClick={() => navigate("/")} type="button">
+            Go to Home 
+          </button>
         </form>
         <div className="text-center mt-3">
           <button className="btn btn-link text-decoration-none" onClick={() => navigate("/forgotpassword")}>
