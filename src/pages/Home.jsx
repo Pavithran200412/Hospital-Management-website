@@ -76,6 +76,29 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Hospital Introduction Video */}
+      <section className="py-5 px-4 bg-white">
+        <div className="container text-center">
+          <h2 className="fw-bold mb-4">Take a Virtual Tour of MedCare Hospital</h2>
+
+          {/* Uncomment below for local video */}
+          {/* <video width="100%" height="auto" controls className="shadow rounded">
+            <source src={require("../assets/videos/hospital.mp4")} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video> */}
+
+          {/* YouTube Embed */}
+          <div className="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="MedCare Hospital Tour"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* Departments Section */}
       <section className="py-5 px-4 bg-light">
         <div className="container">
