@@ -19,7 +19,7 @@ const Navbar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userEmail");
     setUserEmail(null);
-    navigate("/signin");
+    navigate("/");
   };
 
   return (
