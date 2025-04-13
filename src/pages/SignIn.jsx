@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../assets/Background.jpg"; // If used for CSS or background styling
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../assets/Background.jpg";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,22 +21,24 @@ const SignIn = () => {
 
       const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("token", data.token); // Save JWT
-        navigate("/"); // Redirect to home
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userEmail", email);
+        toast.success("Login successful!");
+        setTimeout(() => navigate("/"), 1500);
       } else {
-        setErrorMessage(data.message || "Invalid credentials.");
+        toast.error(data.message || "Invalid credentials.");
       }
     } catch (error) {
       console.error("Login Error:", error);
-      setErrorMessage("Login failed. Please try again.");
+      toast.error("Login failed. Please try again.");
     }
   };
 
   return (
     <div className="auth-container">
+      <ToastContainer />
       <div className="auth-card">
         <h2 className="text-center mb-4">Sign In</h2>
-        {errorMessage && <p className="alert alert-danger text-center">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Email</label>

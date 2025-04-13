@@ -28,7 +28,7 @@
 }
 
 .logo-text {
-  font-size: 18px;
+  font-size: 25px;
   font-weight: bold;
   color: #ffffff;
 }
@@ -51,6 +51,9 @@
   text-decoration: none;
   font-weight: bold;
   color: #1b1b6e;
+}
+.navbar-links a:hover {
+  color: #eb1212;
 }
 
 /* Buttons (Sign In, Sign Up, Appointment) */
@@ -140,4 +143,86 @@
   .menu-toggle {
       display: none;
   }
+/* Button Styles */
+.SignIn-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.SignIn-btn:hover {
+  background-color: #0056b3;
+}
+
+.SignUp-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.SignUp-btn:hover {
+  background-color: #218838;
+}
+
+.appointment-btn {
+  background-color: #ffc107;
+  color: black;
+}
+
+.appointment-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* Responsive Styles for Mobile Menu */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #343a40;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
+
+  .navbar-links.active {
+    display: block;
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Logout Button Styles */
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* User Email (Welcome User) */
+.welcome-user {
+  font-size: 18px;
+  color: #fff;
+  margin-right: 10px;
+  font-weight: 500;
+}
 }

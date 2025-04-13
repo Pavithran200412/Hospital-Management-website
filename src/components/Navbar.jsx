@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/navbar.css";
 import Logo from "../assets/logo.jpg";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigate = useNavigate(); // Navigation hook
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // Define mobile menu state
+  const [userEmail, setUserEmail] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("userEmail");
+    if (storedUser) {
+      setUserEmail(storedUser);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userEmail");
+    setUserEmail(null);
+    navigate("/signin");
+  };
 
   return (
     <nav className="navbar">
@@ -16,7 +31,7 @@ const Navbar = () => {
           <span className="logo-text">MedCare Hospital and Clinic</span>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
+        {/* Mobile Menu Toggle */}
         <button className="menu-toggle" onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
           ☰
         </button>
@@ -30,10 +45,19 @@ const Navbar = () => {
           <li><Link to="/contact">CONTACT</Link></li>
         </ul>
 
-        {/* Buttons with Navigation */}
+        {/* Right Side Buttons */}
         <div className="navbar-buttons">
-          <button className="SignIn-btn" onClick={() => navigate("/signin")}>Sign In</button>
-          <button className="SignUp-btn" onClick={() => navigate("/signup")}>Sign Up</button>
+          {userEmail ? (
+            <>
+              <span className="welcome-user">Welcome, {userEmail}</span>
+              <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <button className="SignIn-btn" onClick={() => navigate("/signin")}>Sign In</button>
+              <button className="SignUp-btn" onClick={() => navigate("/signup")}>Sign Up</button>
+            </>
+          )}
           <button className="appointment-btn" onClick={() => navigate("/appointment")}>Appointment</button>
         </div>
       </div>
