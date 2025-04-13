@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../assets/Background.jpg"; // Import the CSS file
+import "../assets/Background.jpg"; // Import the background image
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ const ForgotPassword = () => {
         setMessage(data.error || "Failed to send reset email.");
       }
     } catch (error) {
-      setMessage("Send reset email. Try again later.");
+      setMessage("Failed to send reset email. Try again later.");
     }
   };
 
@@ -45,7 +45,9 @@ const ForgotPassword = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-warning w-100">Reset Password</button>
+          <button type="submit" className="btn btn-warning w-100">
+            Reset Password
+          </button>
         </form>
         <div className="text-center mt-3">
           <button className="btn btn-link text-decoration-none" onClick={() => navigate("/signin")}>
