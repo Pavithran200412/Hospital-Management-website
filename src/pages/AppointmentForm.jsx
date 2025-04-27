@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/Background.jpg"; // Make sure your background styles are here
 
@@ -15,6 +15,17 @@ const AppointmentForm = () => {
   });
 
   const [showPopup, setShowPopup] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check if user is logged in (on page load)
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // or sessionStorage
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      navigate("/signin"); // Redirect to Sign In page
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +34,23 @@ const AppointmentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isLoggedIn) {
+      navigate("/signin");
+      return;
+    }
+
     setShowPopup(true);
     console.log("Form Data:", formData);
 
     try {
-      // Send the form data to the backend
+      const token = localStorage.getItem("token");
+
       const response = await fetch("http://localhost:5000/api/appointments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Pass token if needed
         },
         body: JSON.stringify(formData),
       });
@@ -60,6 +79,7 @@ const AppointmentForm = () => {
           BOOK APPOINTMENT
         </h2>
         <form onSubmit={handleSubmit} className="row g-3 mt-3">
+          {/* Form Inputs */}
           <div className="col-md-6">
             <input
               type="text"

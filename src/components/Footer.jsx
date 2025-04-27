@@ -21,19 +21,8 @@ const Footer = () => {
           <h5>Quick Links</h5>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/departments">Departments</Link></li>
-            <li><Link to="/facilities">Facilities</Link></li>
-          </ul>
-        </div>
-
-        {/* Useful Links */}
-        <div className="footer-links">
-          <h5>Useful Links</h5>
-          <ul>
-            <li><Link to="/accreditation">Accreditation</Link></li>
-            <li><Link to="/career">Career</Link></li>
-            <li><Link to="/faq">FAQ</Link></li>
+            <li><Link to="/Contact">Contact</Link></li>
+            <li><Link to="/Events">Events</Link></li>
           </ul>
         </div>
 

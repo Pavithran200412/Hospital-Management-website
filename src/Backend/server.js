@@ -11,6 +11,7 @@ const Service = require("./models/Service");
 const Testimonial = require("./models/Testimonial");
 const User = require("./models/User");
 const Appointment = require("./models/Appointment"); // Import Appointment model
+const Registration = require("./models/Registration");
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -165,6 +166,71 @@ app.post("/api/appointments", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "There was an error booking the appointment." });
+  }
+});
+
+// Event Registration Route
+app.post("/api/event-register", async (req, res) => {
+  const { name, email, phone, event } = req.body;
+
+  try {
+    const registration = new Registration({ name, email, phone, event });
+    await registration.save();
+
+    res.status(201).json({ message: "Event registration successful!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to register for event." });
+  }
+});
+
+// Route to get all appointments
+app.get("/api/appointments", async (req, res) => {
+  try {
+    const appointments = await Appointment.find(); // Fetch all appointments from the DB
+    res.json(appointments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching appointments" });
+  }
+});
+
+// ✅ Confirm Appointment Route (PUT)
+app.put("/api/appointments/confirm/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const appointment = await Appointment.findById(id);
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+
+    // Update the appointment status (you can add a status field in your Appointment model)
+    appointment.status = "Confirmed"; // Assuming you have a status field
+    await appointment.save();
+
+    res.status(200).json({ message: "Appointment confirmed" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to confirm appointment" });
+  }
+});
+
+// Delete Appointment Route (DELETE)
+app.delete("/api/appointments/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const appointment = await Appointment.findById(id);
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+
+    // Use deleteOne for deletion
+    await Appointment.deleteOne({ _id: id });
+
+    res.status(200).json({ message: "Appointment deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting appointment:", error);
+    res.status(500).json({ message: "Failed to delete appointment" });
   }
 });
 

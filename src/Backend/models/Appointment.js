@@ -5,8 +5,9 @@ const appointmentSchema = new mongoose.Schema({
   email: { type: String, required: true },
   specialty: { type: String, required: true },
   phone: { type: String, required: true },
-  appointmentDate: { type: Date, required: true },
+  appointmentDate: { type: String, required: true },
   appointmentTime: { type: String, required: true },
+  status: { type: String, default: "Pending" }, // Add the status field
 });
 
 // Convert 24-hour time to AM/PM format before saving

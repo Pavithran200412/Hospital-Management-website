@@ -13,6 +13,7 @@ import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import DoctorInfo from "./pages/DoctorInfo"; 
 import Register from "./pages/Register";
+import Admin from "./pages/Admin";
 
 // Components
 import Footer from "./components/Footer";
@@ -31,7 +32,8 @@ const App = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/doctor-info/:departmentName" element={<DoctorInfo />} />
-        <Route path="/register" element={<Register />} /> {/* ✅ route for Register */}
+        <Route path="/register" element={<Register />} /> 
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </Router>
