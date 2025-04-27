@@ -12,6 +12,7 @@ const Testimonial = require("./models/Testimonial");
 const User = require("./models/User");
 const Appointment = require("./models/Appointment"); // Import Appointment model
 const Registration = require("./models/Registration");
+const ContactMessage = require("./models/ContactMessage");
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -231,6 +232,29 @@ app.delete("/api/appointments/delete/:id", async (req, res) => {
   } catch (error) {
     console.error("Error deleting appointment:", error);
     res.status(500).json({ message: "Failed to delete appointment" });
+  }
+});
+// ✅ Contact Form Submission Route
+app.post("/api/contact", async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  try {
+    // Create a new contact message
+    const newMessage = new ContactMessage({
+      name,
+      email,
+      subject,
+      message,
+    });
+
+    // Save the message to the database
+    await newMessage.save();
+
+    // Respond with a success message
+    res.status(201).json({ message: "Your message has been sent!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to send message. Please try again later." });
   }
 });
 

@@ -619,3 +619,28 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar Styling */
+.navbar {
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 18px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+  color: #007bff;
+}
+
+.navbar-toggler {
+  border-color: #007bff;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-color: #007bff;
+}

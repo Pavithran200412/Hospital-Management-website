@@ -9,9 +9,21 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  // Default admin credentials
+  const adminEmail = "admin@example.com";
+  const adminPassword = "admin123"; // You can change this to the actual admin password
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Check if the user is logging in as admin
+    if (email === adminEmail && password === adminPassword) {
+      toast.success("Admin login successful!");
+      setTimeout(() => navigate("/admin"), 1500); // Redirect to admin page
+      return;
+    }
+
+    // Regular login request
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
@@ -24,7 +36,7 @@ const SignIn = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userEmail", email);
         toast.success("Login successful!");
-        setTimeout(() => navigate("/"), 1500);
+        setTimeout(() => navigate("/"), 1500); // Redirect to homepage
       } else {
         toast.error(data.message || "Invalid credentials.");
       }
