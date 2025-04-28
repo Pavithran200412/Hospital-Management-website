@@ -1,69 +1,65 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../assets/Background.jpg"; // Import your background image if needed
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap for styling
-import { Spinner } from "react-bootstrap"; // Added Bootstrap spinner for loading state
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner } from "react-bootstrap";
 
 const AdminAppointmentsPage = () => {
   const [appointments, setAppointments] = useState([]);
-  const [showAppointments, setShowAppointments] = useState(false); // State to toggle appointments view
-  const [loading, setLoading] = useState(false); // Loading state
-  const navigate = useNavigate(); // Using navigate for redirection if needed
+  const [users, setUsers] = useState([]);
+  const [showAppointments, setShowAppointments] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Function to format time properly (ensure it's in 12-hour AM/PM format)
   const formatTime = (timeString) => {
     const [hour, minute] = timeString.split(":");
     let h = parseInt(hour, 10);
     const ampm = h >= 12 ? "PM" : "AM";
-    h = h % 12 || 12; // Convert 24-hour to 12-hour
+    h = h % 12 || 12;
     return `${h}:${minute} ${ampm}`;
   };
 
-  // Fetch appointments when the component loads
   useEffect(() => {
     if (showAppointments) {
-      const fetchAppointments = async () => {
-        setLoading(true); // Start loading
-        try {
-          const response = await fetch("http://localhost:5000/api/appointments", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error("Failed to fetch appointments");
-          }
-
-          const data = await response.json();
-          setAppointments(data);
-        } catch (error) {
-          console.error(error);
-        } finally {
-          setLoading(false); // End loading
-        }
-      };
-
       fetchAppointments();
+      fetchUsers();
     }
-  }, [showAppointments]); // Only fetch appointments when showAppointments is true
+  }, [showAppointments]);
+
+  const fetchAppointments = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/appointments");
+      if (!response.ok) throw new Error("Failed to fetch appointments");
+      const data = await response.json();
+      setAppointments(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/users/count");
+      if (!response.ok) throw new Error("Failed to fetch user count");
+      const data = await response.json();
+      setUsers(data.count); // store only the count
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleConfirmAppointment = async (appointmentId) => {
     try {
       const response = await fetch(`http://localhost:5000/api/appointments/confirm/${appointmentId}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
+      if (!response.ok) throw new Error("Failed to confirm appointment");
 
-      if (!response.ok) {
-        throw new Error("Failed to confirm appointment");
-      }
-
-      setAppointments((prevAppointments) =>
-        prevAppointments.map((appointment) =>
+      setAppointments((prev) =>
+        prev.map((appointment) =>
           appointment._id === appointmentId ? { ...appointment, confirmed: true } : appointment
         )
       );
@@ -78,18 +74,11 @@ const AdminAppointmentsPage = () => {
     try {
       const response = await fetch(`http://localhost:5000/api/appointments/delete/${appointmentId}`, {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
+      if (!response.ok) throw new Error("Failed to delete appointment");
 
-      if (!response.ok) {
-        throw new Error("Failed to delete appointment");
-      }
-
-      setAppointments((prevAppointments) =>
-        prevAppointments.filter((appointment) => appointment._id !== appointmentId)
-      );
+      setAppointments((prev) => prev.filter((appointment) => appointment._id !== appointmentId));
       alert("Appointment deleted!");
     } catch (error) {
       console.error(error);
@@ -97,17 +86,16 @@ const AdminAppointmentsPage = () => {
     }
   };
 
-  // Filter confirmed and unconfirmed appointments
-  const confirmedAppointments = appointments.filter((appointment) => appointment.confirmed);
-  const unconfirmedAppointments = appointments.filter((appointment) => !appointment.confirmed);
+  const confirmedAppointments = appointments.filter((a) => a.confirmed);
+  const unconfirmedAppointments = appointments.filter((a) => !a.confirmed);
 
   return (
     <div className="container py-5">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <a className="navbar-brand" href="#" style={{ color: "white", fontSize: "24px" }}>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow-sm">
+        <span className="navbar-brand" style={{ fontSize: "26px", fontWeight: "600" }}>
           Admin Panel
-        </a>
+        </span>
         <button
           className="navbar-toggler"
           type="button"
@@ -122,23 +110,93 @@ const AdminAppointmentsPage = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#"
+              <button
+                className="btn btn-outline-light"
                 onClick={() => navigate("/")}
-                style={{ color: "white" }}
               >
-              logout
-              </a>
+                Logout
+              </button>
             </li>
-            {/* Add more links as needed */}
           </ul>
         </div>
       </nav>
 
+      {/* Dashboard Cards */}
+      <div className="row text-center mb-5">
+        <div className="col-md-4 mb-3">
+          <div className="card shadow-lg border-0">
+            <div className="card-body">
+              <h5>Total Users</h5>
+              <h2 className="fw-bold">{users}</h2>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 mb-3">
+          <div className="card shadow-lg border-0">
+            <div className="card-body">
+              <h5>Total Appointments</h5>
+              <h2 className="fw-bold">{appointments.length}</h2>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 mb-3">
+          <div className="card shadow-lg border-0">
+            <div className="card-body">
+              <h5>Confirmed Appointments</h5>
+              <h2 className="fw-bold">{confirmedAppointments.length}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Admin Actions */}
+      <div className="row text-center mb-5">
+        <div className="col-md-2 mb-3">
+          <button
+            className="btn btn-outline-primary w-100"
+            onClick={() => navigate("/add-doctor")}
+          >
+            Add Doctor
+          </button>
+        </div>
+        <div className="col-md-2 mb-3">
+          <button
+            className="btn btn-outline-success w-100"
+            onClick={() => navigate("/add-service")}
+          >
+            Add Service
+          </button>
+        </div>
+        <div className="col-md-2 mb-3">
+          <button
+            className="btn btn-outline-info w-100"
+            onClick={() => navigate("/add-event")}
+          >
+            Add Event
+          </button>
+        </div>
+        <div className="col-md-3 mb-3">
+          <button
+            className="btn btn-outline-warning w-100"
+            onClick={() => navigate("/view-contact-messages")}
+          >
+            View Contact Messages
+          </button>
+        </div>
+        <div className="col-md-3 mb-3">
+          <button
+            className="btn btn-outline-danger w-100"
+            onClick={() => navigate("/view-feedback")}
+          >
+            View Feedback
+          </button>
+        </div>
+      </div>
+
+      {/* Appointments Section */}
       <h2 className="my-4 text-center text-primary">Appointments</h2>
 
-      {/* Button to show appointments */}
+      {/* View Appointments Button */}
       {!showAppointments && (
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4 mb-4">
@@ -148,7 +206,7 @@ const AdminAppointmentsPage = () => {
                 <p className="card-text">View and manage all booked appointments.</p>
                 <button
                   className="btn btn-outline-danger mt-3"
-                  onClick={() => setShowAppointments(true)} // Show appointments after clicking the button
+                  onClick={() => setShowAppointments(true)}
                 >
                   View Appointments
                 </button>
@@ -166,7 +224,7 @@ const AdminAppointmentsPage = () => {
         </div>
       )}
 
-      {/* Show confirmed appointments */}
+      {/* Appointments List */}
       {showAppointments && !loading && (
         <div className="col-12">
           <h4 className="text-success">Confirmed Appointments</h4>
@@ -184,8 +242,8 @@ const AdminAppointmentsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {confirmedAppointments.map((appointment, index) => (
-                  <tr key={index}>
+                {confirmedAppointments.map((appointment) => (
+                  <tr key={appointment._id}>
                     <td>{appointment.name}</td>
                     <td>{appointment.email}</td>
                     <td>{appointment.specialty}</td>
@@ -208,7 +266,6 @@ const AdminAppointmentsPage = () => {
             <p>No confirmed appointments available.</p>
           )}
 
-          {/* Unconfirmed Appointments Section */}
           <h4 className="mt-5 text-warning">Unconfirmed Appointments</h4>
           {unconfirmedAppointments.length > 0 ? (
             <table className="table table-striped table-hover">
@@ -224,8 +281,8 @@ const AdminAppointmentsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {unconfirmedAppointments.map((appointment, index) => (
-                  <tr key={index}>
+                {unconfirmedAppointments.map((appointment) => (
+                  <tr key={appointment._id}>
                     <td>{appointment.name}</td>
                     <td>{appointment.email}</td>
                     <td>{appointment.specialty}</td>

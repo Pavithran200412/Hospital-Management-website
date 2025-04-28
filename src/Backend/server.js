@@ -5,6 +5,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const router = express.Router();
 
 const Doctor = require("./models/Doctor");
 const Service = require("./models/Service");
@@ -13,6 +14,7 @@ const User = require("./models/User");
 const Appointment = require("./models/Appointment"); // Import Appointment model
 const Registration = require("./models/Registration");
 const ContactMessage = require("./models/ContactMessage");
+
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -257,6 +259,18 @@ app.post("/api/contact", async (req, res) => {
     res.status(500).json({ message: "Failed to send message. Please try again later." });
   }
 });
+// New route to get user count
+router.get('/count', async (req, res) => {
+  try {
+    const count = await User.countDocuments();
+    res.json({ count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+module.exports = router;
 
 // ✅ Start the server
 app.listen(process.env.PORT || 5000, () => {
