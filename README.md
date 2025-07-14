@@ -36,3 +36,18 @@ Client -> Server -> Database
 4 -- routes     ->
 5 -- utils      ->
 6 -- app.js 
+
+
+To Run Server:
+cd src
+cd Backend    
+node server.js
+
+output:
+
+Server running on port 5000
+MongoDB connected
+
+
+To Run Application:
+npm start
