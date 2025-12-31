@@ -1,8 +1,8 @@
 import React from "react";
-import "../assets/css/footer.css"; // Import Footer CSS
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa"; // Correct Import for Icons
-import FooterLogo from "../assets/footer.jpg"; // Import Footer Image
-import { Link } from "react-router-dom"; // Import Link for navigation
+import "../assets/css/footer.css"; 
+import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa"; 
+import FooterLogo from "../assets/footer.jpg"; 
+import { Link } from "react-router-dom"; 
 
 const Footer = () => {
   return (

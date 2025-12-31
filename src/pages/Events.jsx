@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../components/Navbar"; // ✅ Import Navbar
+import Navbar from "../components/Navbar"; 
 
 import Event1 from "../assets/Events/event1.jpg";
 import Event2 from "../assets/Events/event2.png";

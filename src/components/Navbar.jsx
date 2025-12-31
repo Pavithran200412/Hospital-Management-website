@@ -4,7 +4,7 @@ import "../assets/css/navbar.css";
 import Logo from "../assets/logo.jpg";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // Define mobile menu state
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); 
   const [userEmail, setUserEmail] = useState(null);
   const navigate = useNavigate();
 
