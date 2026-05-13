@@ -179,7 +179,7 @@ body {
 
   /* Background for Auth Pages */
 .auth-container {
-  background: url('C:\Users\Pavit\Documents\React\hospital-website\src\assets\Background.jpg') no-repeat center center fixed;
+  background: url('../Background.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -197,7 +197,7 @@ body {
 }
 
 .appointment-container {
-  background: url('C:\Users\Pavit\Documents\React\hospital-website\src\assets\Background.jpg') no-repeat center center fixed;
+  background: url('../Background.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // ✅ Import axios
+import axios from "axios"; //  Import axios
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      // ✅ Send form data to backend
+      // Send form data to backend
       await axios.post("http://localhost:5000/api/event-register", formData);
       setShowModal(true);
 
